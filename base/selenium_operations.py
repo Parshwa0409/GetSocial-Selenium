@@ -24,10 +24,13 @@ class BaseOperations:
     def implicit_wait(self, sec=7):
         self.driver.implicitly_wait(sec)
 
-    def wait_for_element(self, locator_tag, locator,
+    def wait_for_element(self,
+                         locator_tag,
+                         locator,
                          multiple=False) -> WebElement or TimeoutException or NoSuchElementException:
 
-        time.sleep(1)
+        time.sleep(1.5)
+
         if not multiple:
             return WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((locator_tag, locator))
@@ -37,5 +40,6 @@ class BaseOperations:
                 EC.presence_of_all_elements_located((locator_tag, locator))
             )
 
-    def click_submit(self, link_text: str, locator_tag='button'):
-        self.driver.find_element(self.XPATH, f"//{locator_tag}[contains(normalize-space(), '{link_text}')]").click()
+    def get_element_classes(self, element):
+        element_class = element.get_attribute("class")
+        return element_class
