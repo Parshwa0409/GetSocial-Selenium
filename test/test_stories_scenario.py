@@ -1,15 +1,14 @@
 import time
-from pages.home import HomePage
-from pages.profile import ProfilePage
-from pages.stories import StoriesPage
-from pages.users_sign_in import UserSignInPage
+from pages.home_page import HomePage
+from pages.profile_page import ProfilePage
+from pages.stories_page import StoriesPage
+from pages.users_sign_in_page import UserSignInPage
 from database.stories import StoriesDB
 
 
 def test_create_stories(launch_browser):
     driver = launch_browser
     sign_in_page = UserSignInPage(driver)
-    stories_db = StoriesDB()
     home_page = HomePage(driver)
     profile_page = ProfilePage(driver)
     sign_in_page.login("parshwapatil9@gmail.com")
@@ -17,6 +16,7 @@ def test_create_stories(launch_browser):
     profile_page.add_story()
     print(driver.current_url)
     home_page.logout()
+
 
 def test_story_view(launch_browser):
     driver = launch_browser
@@ -30,6 +30,7 @@ def test_story_view(launch_browser):
     global story_id
     story_id = story_url.split("/")[-1]
 
+
 def test_story_view_increment(launch_browser):
     driver = launch_browser
     sign_in_page = UserSignInPage(driver)
@@ -38,4 +39,5 @@ def test_story_view_increment(launch_browser):
     time.sleep(2)
     driver.get(f"http://localhost:3000/stories/{story_id}")
     time.sleep(2)
-    assert stories_db.get_story_views(story_id) == 1
+    story_views = stories_db.get_story_views(story_id)
+    assert story_views == 1

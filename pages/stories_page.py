@@ -1,9 +1,9 @@
 import time
 
-from base.selenium_operations import BaseOperations
+from base.selenium_operations import SeleniumBaseOperations
 
 
-class StoriesPage(BaseOperations):
+class StoriesPage(SeleniumBaseOperations):
     def __init__(self, driver):
         super().__init__(driver=driver)
 

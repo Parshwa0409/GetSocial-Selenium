@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class BaseOperations:
+class SeleniumBaseOperations:
     def __init__(self, driver):
         self.driver = driver
         self.ID = "id"
@@ -17,6 +17,10 @@ class BaseOperations:
         self.TAG_NAME = "tag name"
         self.CLASS_NAME = "class name"
         self.CSS_SELECTOR = "css selector"
+
+    def get_url(self, url):
+        self.driver.get(url)
+        time.sleep(1.5)
 
     def current_url(self):
         return self.driver.current_url

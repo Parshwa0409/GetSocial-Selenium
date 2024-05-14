@@ -1,20 +1,19 @@
 from base.db_connection import DatabaseOperations
 
 
-class StoriesDB(DatabaseOperations):
-
-    def find_story_by_id(self, story_id):
+class UsersDB(DatabaseOperations):
+    def find_user_by_id(self, user_id):
         db = self.connect_to_db()
         db_cursor = db.cursor()
-        db_cursor.execute(f"SELECT * FROM stories WHERE id={story_id};")
+        db_cursor.execute(f"SELECT * FROM users WHERE id={user_id};")
         result = db_cursor.fetchone()
         db.close()
         return result
 
-    def get_story_views(self, story_id):
+    def find_user_email_by_id(self, user_id):
         db = self.connect_to_db()
         db_cursor = db.cursor()
-        db_cursor.execute(f"SELECT views FROM stories WHERE id={story_id}")
+        db_cursor.execute(f"SELECT email FROM users WHERE id={user_id};")
         result = db_cursor.fetchone()[0]
         db.close()
         return result
