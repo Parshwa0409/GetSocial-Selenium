@@ -17,3 +17,21 @@ class UsersDB(DatabaseOperations):
         result = db_cursor.fetchone()[0]
         db.close()
         return result
+
+    def find_count_of_users_with_like_name(self, name):
+        db = self.connect_to_db()
+        db_cursor = db.cursor()
+        db_cursor.execute(f"SELECT COUNT(*) FROM users WHERE name LIKE '%{name}%'")
+        result = db_cursor.fetchone()[0]
+        db.close()
+        return result
+    def find_count_of_users_with_email(self, email):
+        db = self.connect_to_db()
+        db_cursor = db.cursor()
+        db_cursor.execute(f"SELECT COUNT(*) FROM users WHERE email LIKE '%{email}%'")
+        result = db_cursor.fetchone()[0]
+        db.close()
+        return result
+
+# udb = UsersDB()
+# udb.find_count_of_users_with_like_name("parshwa")

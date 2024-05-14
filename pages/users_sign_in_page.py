@@ -13,6 +13,6 @@ class UserSignInPage(SeleniumBaseOperations):
         self.wait_for_element(self.XPATH, "//input[@value='Log in']").click()
         time.sleep(2)
 
-    def open_sig_up_form(self):
+    def open_sign_up_form(self):
         self.wait_for_element(self.XPATH, "//a[contains(text(), 'Sign up')]").click()
         time.sleep(2)
