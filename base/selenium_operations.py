@@ -33,8 +33,7 @@ class SeleniumBaseOperations:
                          locator,
                          multiple=False) -> WebElement or TimeoutException or NoSuchElementException:
 
-        time.sleep(1.5)
-
+        time.sleep(1)
         if not multiple:
             return WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((locator_tag, locator))
