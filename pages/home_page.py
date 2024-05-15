@@ -13,4 +13,6 @@ class HomePage(SeleniumBaseOperations):
         self.wait_for_element(self.XPATH, "//button[contains(normalize-space(), 'Logout')]").click()
 
     def get_post_activity_notifications_count(self):
-        return int(self.wait_for_element(self.ID, "unread-notification-count").text)
+        result = self.wait_for_element(self.ID, "unread-notification-count").text
+
+        return 0 if result == '' else int(result)

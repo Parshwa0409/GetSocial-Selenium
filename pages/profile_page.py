@@ -11,5 +11,5 @@ class ProfilePage(SeleniumBaseOperations):
             "/Users/pbpatil/Desktop/GetSocial/app/assets/images/Bugatti.png")
         self.wait_for_element(self.ID, "create-story-btn").click()
 
-
-
+    def send_follow_request(self):
+        self.wait_for_element(self.XPATH, "//button[contains(text(), 'Follow')]").click()

@@ -16,7 +16,6 @@ class SearchPage(SeleniumBaseOperations):
     def get_result_count(self):
         return len(self.wait_for_element(self.CLASS_NAME, "result-row", multiple=True))
 
-
     def __clear_input(self, locator_tag: str, locator: str):
         self.wait_for_element(locator_tag, locator).clear()
 
@@ -25,3 +24,7 @@ class SearchPage(SeleniumBaseOperations):
 
     def clear_email_input(self):
         self.__clear_input(self.ID, "email")
+
+    def view_profile(self, email):
+        self.wait_for_element(self.XPATH,
+                              f"//h4[contains(text(), '{email}')]/ancestor::div[@class='result-row']//following-sibling::form/button").click()

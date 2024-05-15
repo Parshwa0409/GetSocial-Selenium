@@ -20,7 +20,7 @@ def test_story_scenerios(launch_browser):
     profile_page.add_story()
     # time.sleep(2)
     STORY_ID = stories_page.current_url().split("/")[-1]
-    story_views_count_v1 = stories_db.x(STORY_ID)
+    story_views_count_v1 = stories_db.get_story_views(STORY_ID)
     home_page.logout()
 
     sign_in_page.login("mani.p@gmail.com")
