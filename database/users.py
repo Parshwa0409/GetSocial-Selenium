@@ -25,10 +25,19 @@ class UsersDB(DatabaseOperations):
         result = db_cursor.fetchone()[0]
         db.close()
         return result
+
     def find_count_of_users_with_email(self, email):
         db = self.connect_to_db()
         db_cursor = db.cursor()
         db_cursor.execute(f"SELECT COUNT(*) FROM users WHERE email LIKE '%{email}%'")
+        result = db_cursor.fetchone()[0]
+        db.close()
+        return result
+
+    def find_name_of_user_by_email(self, email):
+        db = self.connect_to_db()
+        db_cursor = db.cursor()
+        db_cursor.execute(f"SELECT name FROM users WHERE email='{email}'")
         result = db_cursor.fetchone()[0]
         db.close()
         return result
