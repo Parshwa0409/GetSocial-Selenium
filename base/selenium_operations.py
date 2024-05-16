@@ -6,6 +6,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
+def get_element_classes(element):
+    element_class = element.get_attribute("class")
+    return element_class
+
+
 class SeleniumBaseOperations:
     def __init__(self, driver):
         self.driver = driver
@@ -43,6 +48,3 @@ class SeleniumBaseOperations:
                 EC.presence_of_all_elements_located((locator_tag, locator))
             )
 
-    def get_element_classes(self, element):
-        element_class = element.get_attribute("class")
-        return element_class
